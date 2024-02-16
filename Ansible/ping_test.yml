@@ -1,0 +1,26 @@
+---
+- name: Ping Test
+  hosts: all
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Update System yums
+      yum:
+        name: "*"
+        state: latest
+
+    - name: Install pip3
+      yum:
+        name: python3-pip
+        state: present
+
+    - name: Test ping
+      ping:
+
+    - name : Install netaadr Python library 
+      pip:
+        name: netaddr
+        state: present
+      virtualenv: /usr/bin/python3
+
