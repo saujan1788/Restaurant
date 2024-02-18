@@ -1,0 +1,8 @@
+---
+- name: Check SSH Connectivity
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Test SSH Connectivity
+      ping:
+

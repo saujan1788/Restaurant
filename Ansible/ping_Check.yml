@@ -1,0 +1,10 @@
+---
+- name: Check Ping Connectivity
+  hosts: all
+  gather_facts: false
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - name: Check Ping
+      ping:
+
