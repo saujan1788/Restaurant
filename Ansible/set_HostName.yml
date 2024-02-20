@@ -1,0 +1,29 @@
+---
+
+- name: Set Hostnames
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: Set Hostname
+      command: hostname "{{ 'master' if item == ansible_play_batch.0 else 'worker01' if item == ansible_play_batch.1 else 'worker02' }}"
+      with_items: "{{ ansible_play_batch }}"
+      register: hostname_result
+
+    - name: Display Hostname
+      command: hostname
+      register: current_hostname
+
+    - name: Update /etc/hostname
+      lineinfile:
+        path: /etc/hostname
+        line: "{{ 'master' if item == ansible_play_batch.0 else 'worker01' if item == ansible_play_batch.1 else 'worker02' }}"
+      with_items: "{{ ansible_play_batch }}"
+      notify: Restart systemd-hostnamed
+
+  handlers:
+    - name: Restart systemd-hostnamed
+      systemd:
+        name: systemd-hostnamed
+        state:
+
