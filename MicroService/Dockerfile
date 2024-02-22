@@ -13,3 +13,4 @@ RUN javac -d /app Hello.java
 # Run the application when the container launches
 CMD ["java", "-cp", "/app", "MicroService.Hello"]
 
+
