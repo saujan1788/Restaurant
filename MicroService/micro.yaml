@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: saujan1788/hello.java:updated
+        image: saujan1788/hello.java:updatedv2
         ports:
         - containerPort: 8080
 
