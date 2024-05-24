@@ -67,9 +67,9 @@ jobs:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
         run: |
-          echo "${BASTION_KEY}" | base64 --decode > bastion_key
+          echo "${{ secrets.BASTION_KEY }}" | base64 --decode > bastion_key
           chmod 600 bastion_key
-          ssh -i bastion_key -o StrictHostKeyChecking=no ${BASTION_USER}@${BASTION_HOST} << EOF
-            echo "${KUBE_CONFIG_DATA}" | base64 --decode > ~/.kube/config
-            kubectl set image deployment/restaurant-deployment restaurant=${DOCKER_HUB_USERNAME}/restaurant:latest
+          ssh -i bastion_key -o StrictHostKeyChecking=no ${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }} << EOF
+            echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode > ~/.kube/config
+            kubectl set image deployment/restaurant-deployment restaurant=${{ secrets.DOCKER_HUB_USERNAME }}/restaurant:latest
           EOF
