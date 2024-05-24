@@ -53,6 +53,6 @@ for i in range(10):  # Print the first 10 predictions
     print(f'Actual: {y_test[i]}, Predicted: {y_pred[i][0]}')
 
 # Save the model
-model.save('/Users/saujanya.bohara/Desktop/SRE_Project/Restaurant/Python_project/DataLake/TrainedModel.h5')
+model.save('Python_project/DataLake/TrainedModel.h5')
 
 print("Model training complete and model saved to TrainedModel.h5")
