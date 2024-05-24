@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 # Loading the data
-file_path = "/Users/saujanya.bohara/Desktop/SRE_Project/Restaurant/Python_project/DataLake/Bhojan_Kapan_Clean.xlsx"
+file_path = "Python_project/DataLake/Bhojan_Kapan_Clean.xlsx"
 df = pd.read_excel(file_path)
 
 # Ensure the TIME and NUMBER columns are treated as strings

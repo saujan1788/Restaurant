@@ -7,7 +7,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Input
 
 # Load the cleaned data
-file_path = "/Users/saujanya.bohara/Desktop/SRE_Project/Restaurant/Python_project/DataLake/CleanFileByScript.xlsx"
+file_path = "Python_project/DataLake/CleanFileByScript.xlsx"
 df = pd.read_excel(file_path)
 
 # Ensure the necessary columns are treated as the correct types
