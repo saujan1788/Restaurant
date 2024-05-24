@@ -96,7 +96,7 @@ columns_to_save = ['TIME_NUMERIC', 'NAME', 'PAX_CLEANED', 'NUMBER', 'TABLE', 'TH
 df_cleaned = df[['TIME_NUMERIC', 'NAME', 'PAX_CLEANED', 'NUMBER', 'TABLE', 'THALI']]
 
 # Save the cleaned data to a new Excel file
-output_file_path = "/Users/saujanya.bohara/Desktop/SRE_Project/Restaurant/Python_project/DataLake/CleanFileByScript.xlsx"
+output_file_path = "Python_project/DataLake/CleanFileByScript.xlsx"
 df_cleaned.to_excel(output_file_path, index=False)
 
 # Print confirmation and the cleaned DataFrame
