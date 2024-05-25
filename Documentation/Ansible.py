@@ -19,3 +19,6 @@ def K8s:
 
 def Shutdown:
     Noticed that only the public IP gets changed after shutdown , The internal IPs stayed the same simplifying the restart and shutdwon process 
+
+def IncreaseEBS:
+    Created a playbook to recliam the added disk , changed from 8 to 15GB on all instances.
