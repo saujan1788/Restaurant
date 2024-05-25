@@ -1,0 +1,47 @@
+---
+- name: Resize EBS Volume
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install cloud-guest-utils
+      ansible.builtin.yum:
+        name: cloud-guest-utils
+        state: present
+      when: ansible_distribution == "Amazon" or ansible_distribution == "CentOS"
+
+    - name: Install cloud-utils-growpart
+      ansible.builtin.apt:
+        name: cloud-guest-utils
+        state: present
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Install growpart
+      ansible.builtin.apt:
+        name: cloud-guest-utils
+        state: present
+      when: ansible_distribution == "Debian"
+
+    - name: Run growpart on /dev/xvda1
+      command: growpart /dev/xvda 1
+      register: growpart_output
+
+    - name: Display growpart output
+      debug:
+        var: growpart_output.stdout
+
+    - name: Resize the filesystem
+      command: resize2fs /dev/xvda1
+      register: resize2fs_output
+
+    - name: Display resize2fs output
+      debug:
+        var: resize2fs_output.stdout
+
+    - name: Display disk usage
+      command: df -h
+      register: df_output
+
+    - name: Display df output
+      debug:
+        var: df_output.stdout
+
