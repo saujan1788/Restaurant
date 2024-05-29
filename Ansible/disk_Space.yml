@@ -1,0 +1,14 @@
+---
+
+- name: Check disk space
+  hosts: all
+  become: yes
+  tasks:
+    - name: Check Disk Space 
+      command: df -h
+      register: df_output
+  
+    - name: Display df output
+      debug:
+        var: df_output.stdout
+
