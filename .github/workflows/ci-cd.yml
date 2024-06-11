@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "Python_project/**"
   pull_request:
     branches:
       - main
+    paths:
+      - "Python_project/**"
 
 jobs:
   build-and-deploy:
