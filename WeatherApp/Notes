@@ -1,0 +1,9 @@
+Flask is a lightweight web application framework in Python.
+
+request: Allows us to handle incoming HTTP requests, such as retrieving from data or query parameters.
+
+redner_template: Used to render HTML templates. It allows us to separate HTML from Python Code
+
+load_dotenv : Loads environment variable from a .env file into system env variable.
+
+import os  : This module provides a way of using os dependent functions like reading env variables.
